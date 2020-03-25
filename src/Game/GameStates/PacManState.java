@@ -81,6 +81,7 @@ public class PacManState extends State {
             g.setFont(new Font("TimesRoman", Font.PLAIN, 32));
             g.drawString("Score: " + handler.getScoreManager().getPacmanCurrentScore(),(handler.getWidth()/2) + handler.getWidth()/6, 25);
             g.drawString("High-Score: " + handler.getScoreManager().getPacmanHighScore(),(handler.getWidth()/2) + handler.getWidth()/6, 75);
+            g.drawString("Lives: " + handler.getPacman().getPacmanLives(),(handler.getWidth()/2) + (handler.getWidth()/6), 125); // Shows Current lives
         }else if (Mode.equals("Menu")){
             g.drawImage(Images.start,0,0,handler.getWidth()/2,handler.getHeight(),null);
         }else{
