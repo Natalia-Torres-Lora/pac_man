@@ -16,11 +16,18 @@ public class PacMan extends BaseDynamic{
 	protected double velX,velY,speed = 1;
 	public String facing = "Left";
 	public boolean moving = true,turnFlag = false;
-	public Animation leftAnim,rightAnim,upAnim,downAnim;
+	public Animation leftAnim,rightAnim,upAnim,downAnim, deathAnim;
 	int turnCooldown = 20;
 
 	//added variables
 	int pacmanLives = 3;
+	int deathCooldownTimer = 77;
+	int deathCooldown = 77;
+	int startingX;
+	int startingY;
+	
+	boolean death = false;
+	boolean startingPos = true;
 
 	// Lives Setters and Getters
 	public int getPacmanLives() {
@@ -37,10 +44,18 @@ public class PacMan extends BaseDynamic{
 		rightAnim = new Animation(128,Images.pacmanRight);
 		upAnim = new Animation(128,Images.pacmanUp);
 		downAnim = new Animation(128,Images.pacmanDown);
+		deathAnim = new Animation(128, Images.pacmanDeath);
 	}
 
 	@Override
 	public void tick(){
+		//Runs once to get Pacman starting position
+		while (startingPos == true) {
+			startingX = x;
+			startingY = y;
+			startingPos = false;
+		}
+		
 
 		switch (facing){
 		case "Right":
@@ -59,6 +74,9 @@ public class PacMan extends BaseDynamic{
 			y+=velY;
 			downAnim.tick();
 			break;
+		case "Death":
+			deathAnim.tick();
+			break;
 		}
 		if (turnCooldown<=0){
 			turnFlag= false;
@@ -67,22 +85,40 @@ public class PacMan extends BaseDynamic{
 			turnCooldown--;
 		}
 
-		if ((handler.getKeyManager().keyJustPressed(KeyEvent.VK_RIGHT)  || handler.getKeyManager().keyJustPressed(KeyEvent.VK_D)) && !turnFlag && checkPreHorizontalCollision("Right")){
-			facing = "Right";
-			turnFlag = true;
-			turnCooldown = 20;
-		}else if ((handler.getKeyManager().keyJustPressed(KeyEvent.VK_LEFT) || handler.getKeyManager().keyJustPressed(KeyEvent.VK_A)) && !turnFlag&& checkPreHorizontalCollision("left")){
-			facing = "Left";
-			turnFlag = true;
-			turnCooldown = 20;
-		}else if ((handler.getKeyManager().keyJustPressed(KeyEvent.VK_UP)  ||handler.getKeyManager().keyJustPressed(KeyEvent.VK_W)) && !turnFlag&& checkPreVerticalCollisions("Up")){
-			facing = "Up";
-			turnFlag = true;
-			turnCooldown = 20;
-		}else if ((handler.getKeyManager().keyJustPressed(KeyEvent.VK_DOWN)  || handler.getKeyManager().keyJustPressed(KeyEvent.VK_S)) && !turnFlag&& checkPreVerticalCollisions("Down")){
-			facing = "Down";
-			turnFlag = true;
-			turnCooldown = 20;
+		if (!death) {
+			if ((handler.getKeyManager().keyJustPressed(KeyEvent.VK_RIGHT)  || handler.getKeyManager().keyJustPressed(KeyEvent.VK_D)) && !turnFlag && checkPreHorizontalCollision("Right")){
+				facing = "Right";
+				turnFlag = true;
+				turnCooldown = 20;
+			}else if ((handler.getKeyManager().keyJustPressed(KeyEvent.VK_LEFT) || handler.getKeyManager().keyJustPressed(KeyEvent.VK_A)) && !turnFlag&& checkPreHorizontalCollision("left")){
+				facing = "Left";
+				turnFlag = true;
+				turnCooldown = 20;
+			}else if ((handler.getKeyManager().keyJustPressed(KeyEvent.VK_UP)  ||handler.getKeyManager().keyJustPressed(KeyEvent.VK_W)) && !turnFlag&& checkPreVerticalCollisions("Up")){
+				facing = "Up";
+				turnFlag = true;
+				turnCooldown = 20;
+			}else if ((handler.getKeyManager().keyJustPressed(KeyEvent.VK_DOWN)  || handler.getKeyManager().keyJustPressed(KeyEvent.VK_S)) && !turnFlag&& checkPreVerticalCollisions("Down")){
+				facing = "Down";
+				turnFlag = true;
+				turnCooldown = 20;
+			}
+
+		} else {
+			//Starts death animation, once timer ends, sends Pacman to the spawn position
+			facing = "Death";
+			if(deathCooldownTimer <= 0) {
+				death = false;
+				moving = true;
+				deathCooldownTimer = deathCooldown;
+				setX(startingX);
+				setY(startingY);
+				facing = "Left";
+				
+			}
+			else {
+				deathCooldownTimer--;
+			}
 		}
 
 		if (facing.equals("Right") || facing.equals("Left")){
@@ -100,6 +136,12 @@ public class PacMan extends BaseDynamic{
 			if(pacmanLives < 3) {
 				pacmanLives += 1;
 			}		
+		}
+		/**
+		 * Kills Pacman with N
+		 */
+		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_P)){
+			pacmanDeath();
 		}
 
 	}
@@ -226,7 +268,19 @@ public class PacMan extends BaseDynamic{
 		}
 		return true;
 	}
+	
+	//Starts pacmanDeath sequence, plays sounds effects, looses a life and enable animation to start. 
+	public void pacmanDeath() {
+		// Checks if deathCooldownTimer is inactive to activate sequence
+		if(deathCooldown == deathCooldownTimer) {
+			handler.getMusicHandler().playEffect("pacman_death.wav");
+			death = true;
+			moving =false;
+			int lives = handler.getPacman().getPacmanLives();
+			handler.getPacman().setPacmanLives(lives - 1);				
+		}
 
+	}
 
 	public double getVelX() {
 		return velX;

@@ -37,7 +37,8 @@ public class Images {
     public static BufferedImage[] bound;
     public static BufferedImage intro;
     public static BufferedImage start;
-
+    
+    public static BufferedImage [] pacmanDeath;
 
 
     public static BufferedImage galagaImageSheet;
@@ -64,6 +65,8 @@ public class Images {
         pacmanUp = new BufferedImage[2];
         pacmanDown = new BufferedImage[2];
         bound = new BufferedImage[16];
+        
+        pacmanDeath = new BufferedImage[10];
 
 
         try {
@@ -165,6 +168,17 @@ public class Images {
             pacmanDown[0] = pacmanSpriteSheet.crop(473,48,13,12);
             pacmanDown[1] = pacmanSpriteSheet.crop(489,1,13,13);
 
+            pacmanDeath[0] = pacmanSpriteSheet.crop(505, 3, 13, 9);
+			pacmanDeath[1] = pacmanSpriteSheet.crop(520, 4, 15, 8);
+			pacmanDeath[2] = pacmanSpriteSheet.crop(536, 6, 15, 6);
+			pacmanDeath[3] = pacmanSpriteSheet.crop(552, 7, 15, 5);
+			pacmanDeath[4] = pacmanSpriteSheet.crop(568, 8, 15, 5);
+			pacmanDeath[5] = pacmanSpriteSheet.crop(584, 8, 15, 6);
+			pacmanDeath[6] = pacmanSpriteSheet.crop(601, 8, 13, 7);
+			pacmanDeath[7] = pacmanSpriteSheet.crop(619, 8, 9, 7);
+			pacmanDeath[8] = pacmanSpriteSheet.crop(637, 8, 5, 7);
+			pacmanDeath[9] = pacmanSpriteSheet.crop(666, 6, 11, 10);
+			
             intro = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/PacMan/intro.png"));
             start = ImageIO.read(getClass().getResourceAsStream("/UI/Backgrounds/startScreen.png"));
 

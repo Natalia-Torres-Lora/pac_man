@@ -58,6 +58,9 @@ public class Map {
                     case "Down":
                         g2.drawImage(((PacMan) entity).downAnim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
                         break;
+                    case "Death":
+                    	g2.drawImage(((PacMan) entity).deathAnim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
+                    	break;
                 }
             }
             else {
