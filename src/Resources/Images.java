@@ -45,6 +45,10 @@ public class Images {
 
     public static BufferedImage pacmanImageSheet;
     public SpriteSheet pacmanSpriteSheet;
+    
+    //
+    public static BufferedImage pacmanLogo;
+    public static BufferedImage[] blink;
 
     public Images() {
 
@@ -64,6 +68,9 @@ public class Images {
         pacmanUp = new BufferedImage[2];
         pacmanDown = new BufferedImage[2];
         bound = new BufferedImage[16];
+        
+        //
+        blink = new BufferedImage[2];
 
 
         try {
@@ -135,6 +142,11 @@ public class Images {
             ghost = pacmanSpriteSheet.crop(456,64,16,16);
             pacmanDots[0] = pacmanSpriteSheet.crop(643,18,16,16);
             pacmanDots[1] = pacmanSpriteSheet.crop(623,18,16,16);
+            
+            //
+            blink[0] = pacmanSpriteSheet.crop(643,18,16,16);
+            blink[1] = ImageIO.read(getClass().getResourceAsStream("/UI/Buttons/Selection/Galaga/black.png"));
+            
 
             bound[0] = pacmanSpriteSheet.crop(603,18,16,16);//single
             bound[1] = pacmanSpriteSheet.crop(615,37,16,16);//right open
@@ -167,6 +179,9 @@ public class Images {
 
             intro = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/PacMan/intro.png"));
             start = ImageIO.read(getClass().getResourceAsStream("/UI/Backgrounds/startScreen.png"));
+            
+            ///
+            pacmanLogo = ImageIO.read(getClass().getResourceAsStream("/UI/Buttons/Selection/Galaga/Pacmanpng.png"));
 
 
 

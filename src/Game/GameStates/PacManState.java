@@ -7,7 +7,10 @@ import Game.PacMan.entities.Statics.BaseStatic;
 import Game.PacMan.entities.Statics.BigDot;
 import Game.PacMan.entities.Statics.Dot;
 import Main.Handler;
+import Resources.Animation;
 import Resources.Images;
+
+//import Game.PacMan.entities.Statics.BigDot;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -19,10 +22,11 @@ public class PacManState extends State {
     public String Mode = "Intro";
     public int startCooldown = 60*4;//seven seconds for the music to finish
 
+    
     public PacManState(Handler handler){
         super(handler);
         handler.setMap(MapBuilder.createMap(Images.map1, handler));
-
+        
     }
 
 
@@ -48,6 +52,7 @@ public class PacManState extends State {
                             handler.getScoreManager().addPacmanCurrentScore(100);
 
                         }
+                        blocks.tick();
                     }
                 }
                 for (BaseStatic removing: toREmove){
@@ -81,6 +86,8 @@ public class PacManState extends State {
             g.setFont(new Font("TimesRoman", Font.PLAIN, 32));
             g.drawString("Score: " + handler.getScoreManager().getPacmanCurrentScore(),(handler.getWidth()/2) + handler.getWidth()/6, 25);
             g.drawString("High-Score: " + handler.getScoreManager().getPacmanHighScore(),(handler.getWidth()/2) + handler.getWidth()/6, 75);
+            
+            
         }else if (Mode.equals("Menu")){
             g.drawImage(Images.start,0,0,handler.getWidth()/2,handler.getHeight(),null);
         }else{
