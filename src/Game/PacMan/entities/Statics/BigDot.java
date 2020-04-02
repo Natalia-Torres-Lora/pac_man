@@ -17,4 +17,5 @@ public class BigDot extends BaseStatic{
     public void tick() {
    	blink.tick();
     }
+    
 }
