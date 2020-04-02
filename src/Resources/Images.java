@@ -48,7 +48,7 @@ public class Images {
     public SpriteSheet pacmanSpriteSheet;
     
     //Added PacManLogo
-    public static BufferedImage pacmanLogo;
+    public static BufferedImage[] pacmanLogo;
     public static BufferedImage[] blink;
 
     public Images() {
@@ -72,6 +72,7 @@ public class Images {
         
         //added the blink array
         blink = new BufferedImage[2];
+        pacmanLogo = new BufferedImage[3];
         
         pacmanDeath = new BufferedImage[10];
 
@@ -148,7 +149,11 @@ public class Images {
             
             //Added blinking images
             blink[0] = pacmanSpriteSheet.crop(643,18,16,16);
-            blink[1] = ImageIO.read(getClass().getResourceAsStream("/UI/Buttons/Selection/Galaga/black.png"));
+            
+         // Added Image image of the origianl PacMan Logo
+            pacmanLogo[0] = ImageIO.read(getClass().getResourceAsStream("/UI/Buttons/Selection/Galaga/Pacmanpng.png"));
+           // pacmanLogo[1] = ImageIO.read(getClass().getResourceAsStream("UI/Buttons/Selection/Galaga/hover_pacman_logo.png"));
+           // pacmanLogo[2] = ImageIO.read(getClass().getResourceAsStream("UI/Buttons/Selection/Galaga/pressed_pacman_logo.png"));
             
 
             bound[0] = pacmanSpriteSheet.crop(603,18,16,16);//single
@@ -194,8 +199,6 @@ public class Images {
             intro = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/PacMan/intro.png"));
             start = ImageIO.read(getClass().getResourceAsStream("/UI/Backgrounds/startScreen.png"));
             
-            // Added Image image of the origianl PacMan Logo
-            pacmanLogo = ImageIO.read(getClass().getResourceAsStream("/UI/Buttons/Selection/Galaga/Pacmanpng.png"));
 
 
 
