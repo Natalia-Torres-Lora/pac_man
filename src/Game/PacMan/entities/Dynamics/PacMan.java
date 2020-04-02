@@ -183,7 +183,7 @@ public class PacMan extends BaseDynamic{
 		}
 
 		if(pacmanDies) {
-			handler.getMap().reset();
+			pacmanDeath();
 		}
 	}
 
@@ -231,7 +231,7 @@ public class PacMan extends BaseDynamic{
 		}
 
 		if(pacmanDies) {
-			handler.getMap().reset();
+			pacmanDeath();
 		}else {
 
 			for (BaseStatic brick : bricks) {
