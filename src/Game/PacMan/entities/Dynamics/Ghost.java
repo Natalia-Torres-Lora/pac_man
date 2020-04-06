@@ -7,7 +7,7 @@ import Resources.Animation;
 import Resources.Images;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -17,7 +17,6 @@ public class Ghost extends BaseDynamic{
 	public String facing = "Up";
 	public boolean moving = true,turnFlag = false;
 	public Animation leftAnim,rightAnim,upAnim,downAnim;
-	int turnCooldown = 30;
 
 	boolean colission = false;
 	String colissionSide = "";
@@ -54,20 +53,17 @@ public class Ghost extends BaseDynamic{
 			downAnim.tick();
 			break;
 		}
-		if (turnCooldown<=0){
-			turnFlag= false;
-			turnCooldown = 30;
-		}
-		if (turnFlag){
-			turnCooldown--;
-		}
 
+		//Makes the ghost change position once it touches a wall.
 		if (colission) {
 			
 			move = rand.nextInt(4);
 			
 			if (!(direction == move)) {
+				
 				direction = move;
+				// Makes the ghost turn a new way that its not the way where it was coming from.
+				
 				if (direction == 0 && colissionSide != "Left" && checkPreHorizontalCollision("Right")){
 					facing = "Right";
 					turnFlag = true;
