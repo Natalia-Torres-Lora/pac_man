@@ -65,8 +65,7 @@ public class Ghost extends BaseDynamic{
 		if (colission) {
 			
 			move = rand.nextInt(4);
-			System.out.println(move);
-			System.out.println(colissionSide);
+			
 			if (!(direction == move)) {
 				direction = move;
 				if (direction == 0 && colissionSide != "Left" && checkPreHorizontalCollision("Right")){
