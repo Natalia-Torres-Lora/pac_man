@@ -18,7 +18,7 @@ public class MapBuilder {
 	public static int pixelMultiplier = 18;//change this for size of blocks
 	public static int boundBlock = new Color(0,0,0).getRGB();
 	public static int pacman = new Color(255, 255,0).getRGB();
-	public static int ghostC = new Color(25, 255,0).getRGB();
+	public static int ghostSpawner = new Color(25, 255,0).getRGB();
 	public static int dotC = new Color(255, 10, 0).getRGB();
 	public static int bigDotC = new Color(167, 0, 150).getRGB();
 
@@ -36,7 +36,7 @@ public class MapBuilder {
 					BaseDynamic PacMan = new PacMan(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addEnemy(PacMan);
 					handler.setPacman((Game.PacMan.entities.Dynamics.PacMan) PacMan);
-				}else if(currentPixel == ghostC){
+				}else if(currentPixel == ghostSpawner){
 					BaseDynamic ghost = new Ghost(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addEnemy(ghost);
 				}else if(currentPixel == dotC){
