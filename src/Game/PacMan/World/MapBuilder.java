@@ -1,7 +1,7 @@
 package Game.PacMan.World;
 
 import Game.PacMan.entities.Dynamics.BaseDynamic;
-import Game.PacMan.entities.Dynamics.Ghost;
+import Game.PacMan.entities.Dynamics.GhostSpawner;
 import Game.PacMan.entities.Dynamics.PacMan;
 import Game.PacMan.entities.Statics.BaseStatic;
 import Game.PacMan.entities.Statics.BigDot;
@@ -37,8 +37,7 @@ public class MapBuilder {
 					mapInCreation.addEnemy(PacMan);
 					handler.setPacman((Game.PacMan.entities.Dynamics.PacMan) PacMan);
 				}else if(currentPixel == ghostSpawner){
-					BaseDynamic ghost = new Ghost(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
-					mapInCreation.addEnemy(ghost);
+					mapInCreation.addEnemy(GhostSpawner.firstGhosts(xPos, yPos, handler));	
 				}else if(currentPixel == dotC){
 					BaseStatic dot = new Dot(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addBlock(dot);
