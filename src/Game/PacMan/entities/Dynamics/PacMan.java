@@ -103,7 +103,7 @@ public class PacMan extends BaseDynamic{
 				turnFlag = true;
 				turnCooldown = 20;
 			}
-
+			
 		} else {
 			//Starts death animation, once timer ends, sends Pacman to the spawn position
 			facing = "Death";

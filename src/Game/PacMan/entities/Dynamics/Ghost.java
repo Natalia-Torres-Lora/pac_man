@@ -17,6 +17,7 @@ public class Ghost extends BaseDynamic{
 	public String facing = "Up";
 	public boolean moving = true,turnFlag = false;
 	public Animation leftAnim,rightAnim,upAnim,downAnim;
+	public Animation edibleAnim;
 
 	boolean colission = false;
 	String colissionSide = "";
@@ -29,6 +30,7 @@ public class Ghost extends BaseDynamic{
 		rightAnim = new Animation(128,Images.pacmanRight);
 		upAnim = new Animation(128,Images.pacmanUp);
 		downAnim = new Animation(128,Images.pacmanDown);
+		edibleAnim = new Animation(128,Images.edibleGhost);		
 	}
 
 	@Override
@@ -53,7 +55,7 @@ public class Ghost extends BaseDynamic{
 			downAnim.tick();
 			break;
 		}
-
+		edibleAnim.tick();
 		//Makes the ghost change position once it touches a wall.
 		if (colission) {
 			
@@ -83,8 +85,7 @@ public class Ghost extends BaseDynamic{
 				} 
 				colission = false;
 			}
-
-
+			
 		}
 		if (facing.equals("Right") || facing.equals("Left")){
 			checkHorizontalCollision();
@@ -122,9 +123,7 @@ public class Ghost extends BaseDynamic{
 						colissionSide = "Down";
 						ghost.setY(brick.getY() - brick.getDimension().height);
 					}
-						
-
-				}
+				}				
 			}
 		}
 

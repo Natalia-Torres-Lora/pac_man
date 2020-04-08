@@ -50,6 +50,8 @@ public class Images {
     //Added PacManLogo
     public static BufferedImage[] pacmanLogo;
     public static BufferedImage[] blink;
+    //Added ghost death Animation
+    public static BufferedImage [] edibleGhost;
 
     public Images() {
 
@@ -75,6 +77,8 @@ public class Images {
         pacmanLogo = new BufferedImage[3];
         
         pacmanDeath = new BufferedImage[10];
+        
+        edibleGhost = new BufferedImage[2];
 
 
         try {
@@ -154,6 +158,10 @@ public class Images {
             pacmanLogo[0] = ImageIO.read(getClass().getResourceAsStream("/UI/Buttons/Selection/Galaga/Pacmanpng.png"));
            // pacmanLogo[1] = ImageIO.read(getClass().getResourceAsStream("UI/Buttons/Selection/Galaga/hover_pacman_logo.png"));
            // pacmanLogo[2] = ImageIO.read(getClass().getResourceAsStream("UI/Buttons/Selection/Galaga/pressed_pacman_logo.png"));
+            //
+            edibleGhost[0] = pacmanSpriteSheet.crop(601, 65, 14, 14);
+            edibleGhost[1] = pacmanSpriteSheet.crop(617, 65, 14, 14);
+            
             
 
             bound[0] = pacmanSpriteSheet.crop(603,18,16,16);//single
