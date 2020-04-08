@@ -3,6 +3,7 @@ package Game.GameStates;
 import Display.UI.UIManager;
 import Game.PacMan.World.MapBuilder;
 import Game.PacMan.entities.Dynamics.BaseDynamic;
+import Game.PacMan.entities.Dynamics.GhostSpawner;
 import Game.PacMan.entities.Statics.BaseStatic;
 import Game.PacMan.entities.Statics.BigDot;
 import Game.PacMan.entities.Statics.Dot;
@@ -93,7 +94,6 @@ public class PacManState extends State {
         for (BaseStatic removing: toREmove){
         	handler.getMap().getBlocksOnMap().remove(removing);
         }
-
         	}
 
         }else if (Mode.equals("Menu")){
@@ -102,9 +102,12 @@ public class PacManState extends State {
         		handler.getMusicHandler().playEffect("pacman_beginning.wav");
         	}
 
-        }else{ if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ENTER)){
+        }else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ENTER)){
         	Mode = "Menu";
-        }
+        }else {
+        	if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_C)) {
+    			GhostSpawner.newGhost(handler);
+    		}
 
         }
 
