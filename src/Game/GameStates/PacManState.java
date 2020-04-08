@@ -3,6 +3,7 @@ package Game.GameStates;
 import Display.UI.UIManager;
 import Game.PacMan.World.MapBuilder;
 import Game.PacMan.entities.Dynamics.BaseDynamic;
+import Game.PacMan.entities.Dynamics.Ghost;
 import Game.PacMan.entities.Dynamics.GhostSpawner;
 import Game.PacMan.entities.Statics.BaseStatic;
 import Game.PacMan.entities.Statics.BigDot;
@@ -20,7 +21,7 @@ public class PacManState extends State {
     private UIManager uiManager;
     public String Mode = "Intro";
     public int startCooldown = 60*4;//seven seconds for the music to finish
-    public int edibleTimer = 60*10;
+    public int edibleTimer = 60*30;
     public Animation edibleAnim;
 
     
@@ -66,13 +67,14 @@ public class PacManState extends State {
         }else if(Mode.equals("Edible")) {
         	if(edibleTimer<=0) {
         		Mode = "Stage";
-        		edibleTimer = 60*10;
+        		edibleTimer = 60*30;
         	}else {
         		edibleTimer--;
-        	for (BaseDynamic entity : handler.getMap().getEnemiesOnMap()) {        		
-        			entity.tick();
+        for (BaseDynamic entity : handler.getMap().getEnemiesOnMap()) {        		
+        		entity.tick();
         }
         ArrayList<BaseStatic> toREmove = new ArrayList<>();
+        ArrayList<BaseDynamic> toREmoveG = new ArrayList<>();
         for (BaseStatic blocks: handler.getMap().getBlocksOnMap()){
             if (blocks instanceof Dot){
                 if (blocks.getBounds().intersects(handler.getPacman().getBounds())){
@@ -91,6 +93,19 @@ public class PacManState extends State {
             	blocks.tick();
             }
         }
+        for(BaseDynamic entity : handler.getMap().getEnemiesOnMap()) {
+        	if(entity instanceof Ghost) {
+        		if(entity.getBounds().intersects(handler.getPacman().getBounds())) {
+        			handler.getMusicHandler().playEffect("pacman_eatghost.wav");
+        			toREmoveG.add(entity);
+        			handler.getScoreManager().addPacmanCurrentScore(500);
+        		}
+        	}
+        }
+        for (BaseDynamic removing: toREmoveG){
+        	handler.getMap().getEnemiesOnMap().remove(removing);
+        }
+        
         for (BaseStatic removing: toREmove){
         	handler.getMap().getBlocksOnMap().remove(removing);
         }
