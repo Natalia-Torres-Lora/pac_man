@@ -10,6 +10,7 @@ import Game.PacMan.entities.Statics.BigDot;
 import Game.PacMan.entities.Statics.Dot;
 import Game.PacMan.entities.Statics.Fruit;
 import Game.PacMan.entities.Statics.Fruit2;
+import Game.PacMan.entities.Statics.pointsGhost;
 import Main.Handler;
 import Resources.Animation;
 import Resources.Images;
@@ -28,7 +29,8 @@ public class PacManState extends State {
     int ghostCount = 4;
     int timer = 0;
     String ghostColor;
-    
+    int pointsTimer;
+    BaseStatic points;
     public PacManState(Handler handler){
         super(handler);
         handler.setMap(MapBuilder.createMap(Images.map1, handler));
@@ -130,6 +132,10 @@ public class PacManState extends State {
         			ghostCount -= 1;
         			timer = GhostSpawner.timer();
         			ghostColor = ((Ghost) entity).getColorGhost();
+        			Rectangle bounds = entity.getBounds();
+        			points = new pointsGhost(bounds.x,bounds.y, bounds.width,bounds.height,handler);
+        			handler.getMap().addBlock(points);
+        			pointsTimer = 60*2;
         		}
         	}
         }
@@ -156,7 +162,8 @@ public class PacManState extends State {
 			GhostSpawner.newGhost(handler);
 			ghostCount += 1;
 		}
-
+        
+        //Checks if there is less than 4 ghosts and runs the timer for a new one to spawn
         if (ghostCount < 4) {
         	if (timer <= 0) {
         		ghostCount += 1;
@@ -164,7 +171,14 @@ public class PacManState extends State {
         	}else {
         		timer--;
         	}
+        	if(pointsTimer <= 0) {
+        		handler.getMap().getBlocksOnMap().remove(points);
+        	}else {
+        		pointsTimer --;
+        	}
         }
+        
+        
     }
 
     @Override

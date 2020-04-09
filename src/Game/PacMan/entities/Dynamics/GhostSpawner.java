@@ -29,7 +29,7 @@ public class GhostSpawner{
 	}
 	public static int timer() {
 		Random rand = new Random();
-		int timer = (rand.nextInt(4) + 1) * 60; 
+		int timer = (rand.nextInt(4) + 3) * 60; 
 		return timer;
 	}
 	

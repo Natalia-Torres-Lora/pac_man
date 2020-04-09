@@ -81,6 +81,7 @@ public class Images {
     public static BufferedImage[] orangeGhostUp;
     public static BufferedImage[] orangeGhostDown;
     
+    public static BufferedImage[] points;
     public Images() {
 
         startGameButton = new BufferedImage[3];
@@ -106,7 +107,7 @@ public class Images {
         
         pacmanDeath = new BufferedImage[10];
         
-        edibleGhost = new BufferedImage[2];
+        edibleGhost = new BufferedImage[4];
         pacmanFruit = new BufferedImage[2];
         
         redGhostLeft = new BufferedImage[2];
@@ -129,6 +130,8 @@ public class Images {
         orangeGhostUp = new BufferedImage[2];
         orangeGhostDown = new BufferedImage[2];
 
+        points = new BufferedImage[1];
+        
         try {
 
             startGameButton[0]= ImageIO.read(getClass().getResourceAsStream("/UI/Buttons/Start/NormalStartButton.png"));
@@ -207,8 +210,10 @@ public class Images {
            // pacmanLogo[1] = ImageIO.read(getClass().getResourceAsStream("UI/Buttons/Selection/Galaga/hover_pacman_logo.png"));
            // pacmanLogo[2] = ImageIO.read(getClass().getResourceAsStream("UI/Buttons/Selection/Galaga/pressed_pacman_logo.png"));
             //
-            edibleGhost[0] = pacmanSpriteSheet.crop(601, 65, 14, 14);
-            edibleGhost[1] = pacmanSpriteSheet.crop(617, 65, 14, 14);
+            edibleGhost[0] = pacmanSpriteSheet.crop(585, 65, 14, 14);
+            edibleGhost[1] = pacmanSpriteSheet.crop(601, 65, 14, 14);
+            edibleGhost[2] = pacmanSpriteSheet.crop(617, 65, 14, 14);
+            edibleGhost[3] = pacmanSpriteSheet.crop(634, 65, 14, 14);
             
             pacmanFruit[0] = pacmanSpriteSheet.crop(490, 50, 12, 12);
             pacmanFruit[1] = pacmanSpriteSheet.crop(506, 50, 11, 12);
@@ -309,7 +314,7 @@ public class Images {
 			orangeGhostDown[0] = pacmanSpriteSheet.crop(553,113, 14, 14);
 			orangeGhostDown[1] = pacmanSpriteSheet.crop(569,113, 14, 14);
 			
-			
+			points[0]= pacmanSpriteSheet.crop(488, 148, 15, 7);
             intro = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/PacMan/intro.png"));
             start = ImageIO.read(getClass().getResourceAsStream("/UI/Backgrounds/startScreen.png"));
             

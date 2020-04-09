@@ -54,7 +54,7 @@ public class Ghost extends BaseDynamic{
 			downAnim = new Animation(128,Images.orangeGhostDown);
 			
 		}
-		edibleAnim = new Animation(500,Images.edibleGhost);	
+		edibleAnim = new Animation(128,Images.edibleGhost);	
 	}
 
 	@Override
