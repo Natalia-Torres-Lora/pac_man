@@ -83,6 +83,9 @@ public class Handler {
     public PacManState getPacManState (){
         return (PacManState)getGameProperties().pacmanState;
     }
+    public EndGameState getEndGameState() {
+    	return (EndGameState)getGameProperties().endGameState;
+    }
 
 
     public void changeState(State state){

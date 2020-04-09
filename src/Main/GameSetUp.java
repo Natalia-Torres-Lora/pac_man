@@ -39,6 +39,7 @@ public class GameSetUp implements Runnable {
     public State pauseState;
     public State galagaState;
     public State pacmanState;
+    public State endGameState;
 
 
 
@@ -73,6 +74,7 @@ public class GameSetUp implements Runnable {
         pauseState = new PauseState(handler);
         galagaState = new GalagaState(handler);
         pacmanState = new PacManState(handler);
+        endGameState = new EndGameState(handler);
 
         handler.setScoreManager(new ScoreManager(handler));
         handler.setMusicHandler(new MusicHandler(handler));

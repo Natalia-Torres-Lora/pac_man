@@ -1,5 +1,6 @@
 package Game.PacMan.entities.Dynamics;
 
+import Game.GameStates.State;
 import Game.PacMan.entities.Statics.BaseStatic;
 import Game.PacMan.entities.Statics.BoundBlock;
 import Input.KeyManager;
@@ -277,7 +278,10 @@ public class PacMan extends BaseDynamic{
 			death = true;
 			moving =false;
 			int lives = handler.getPacman().getPacmanLives();
-			handler.getPacman().setPacmanLives(lives - 1);				
+			handler.getPacman().setPacmanLives(lives - 1);
+			if(lives == 1) {
+				State.setState(handler.getEndGameState());
+			}
 		}
 
 	}

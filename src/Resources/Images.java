@@ -53,6 +53,7 @@ public class Images {
     //Added ghost death Animation
     public static BufferedImage [] edibleGhost;
     public static BufferedImage[] pacmanFruit;
+    public static BufferedImage endGameBackground;
 
     //Red Ghost Anim
     public static BufferedImage[] redGhostLeft;
@@ -211,6 +212,8 @@ public class Images {
             
             pacmanFruit[0] = pacmanSpriteSheet.crop(490, 50, 12, 12);
             pacmanFruit[1] = pacmanSpriteSheet.crop(506, 50, 11, 12);
+            
+            endGameBackground = ImageIO.read(getClass().getResourceAsStream("/UI/Backgrounds/GameOver.png"));
             
             
 
