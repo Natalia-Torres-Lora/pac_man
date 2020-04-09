@@ -49,7 +49,7 @@ public class MapBuilder {
 						mapInCreation.addEnemy(GhostSpawner.firstGhosts(xPos, yPos, handler, x));	
 					}					
 				}else if(currentPixel == dotC){
-					if(Math.random()< 0.30) {
+					if(Math.random()< 0.033) {
 						if(randFruit==0) {
 						BaseStatic fruit = new Fruit(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 						mapInCreation.addBlock(fruit);
