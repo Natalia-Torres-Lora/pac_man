@@ -24,13 +24,34 @@ public class Ghost extends BaseDynamic{
 	Random rand = new Random();
 	int direction = 2;
 	int move = 0;
-	public Ghost(int x, int y, int width, int height, Handler handler) {
+	public Ghost(int x, int y, int width, int height, Handler handler, String color) {
 		super(x, y, width, height, handler, Images.ghost);
-		leftAnim = new Animation(128,Images.pacmanLeft);
-		rightAnim = new Animation(128,Images.pacmanRight);
-		upAnim = new Animation(128,Images.pacmanUp);
-		downAnim = new Animation(128,Images.pacmanDown);
-		edibleAnim = new Animation(500,Images.edibleGhost);		
+		if (color == "red") {
+			leftAnim = new Animation(128,Images.redGhostLeft);
+			rightAnim = new Animation(128,Images.redGhostRight);
+			upAnim = new Animation(128,Images.redGhostUp);
+			downAnim = new Animation(128,Images.redGhostDown);
+				
+		}else if(color == "pink") {
+			leftAnim = new Animation(128,Images.pinkGhostLeft);
+			rightAnim = new Animation(128,Images.pinkGhostRight);
+			upAnim = new Animation(128,Images.pinkGhostUp);
+			downAnim = new Animation(128,Images.pinkGhostDown);
+			
+		}else if(color == "blue") {
+			leftAnim = new Animation(128,Images.blueGhostLeft);
+			rightAnim = new Animation(128,Images.blueGhostRight);
+			upAnim = new Animation(128,Images.blueGhostUp);
+			downAnim = new Animation(128,Images.blueGhostDown);
+			
+		}else if(color == "orange") {
+			leftAnim = new Animation(128,Images.orangeGhostLeft);
+			rightAnim = new Animation(128,Images.orangeGhostRight);
+			upAnim = new Animation(128,Images.orangeGhostUp);
+			downAnim = new Animation(128,Images.orangeGhostDown);
+			
+		}
+		edibleAnim = new Animation(500,Images.edibleGhost);	
 	}
 
 	@Override

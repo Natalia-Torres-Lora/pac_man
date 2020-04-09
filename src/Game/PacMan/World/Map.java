@@ -69,7 +69,20 @@ public class Map {
                 }
             }
             else {
-            	g2.drawImage(entity.sprite, entity.x, entity.y, entity.width, entity.height, null);
+            	switch (((Ghost) entity).facing){
+                case "Right":
+                    g2.drawImage(((Ghost) entity).rightAnim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
+                    break;
+                case "Left":
+                    g2.drawImage(((Ghost) entity).leftAnim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
+                    break;
+                case "Up":
+                    g2.drawImage(((Ghost) entity).upAnim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
+                    break;
+                case "Down":
+                    g2.drawImage(((Ghost) entity).downAnim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
+                    break;
+            	}
             }
         }
 

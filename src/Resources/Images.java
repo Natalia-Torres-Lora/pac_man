@@ -54,6 +54,32 @@ public class Images {
     public static BufferedImage [] edibleGhost;
     public static BufferedImage[] pacmanFruit;
 
+    //Red Ghost Anim
+    public static BufferedImage[] redGhostLeft;
+    public static BufferedImage[] redGhostRight;
+    public static BufferedImage[] redGhostUp;
+    public static BufferedImage[] redGhostDown;
+    
+    //Pink Ghost Anim
+    public static BufferedImage[] pinkGhostLeft;
+    public static BufferedImage[] pinkGhostRight;
+    public static BufferedImage[] pinkGhostUp;
+    public static BufferedImage[] pinkGhostDown;
+    
+    //Blue Ghost Anim
+    
+    public static BufferedImage[] blueGhostLeft;
+    public static BufferedImage[] blueGhostRight;
+    public static BufferedImage[] blueGhostUp;
+    public static BufferedImage[] blueGhostDown;
+    
+    //Orange Ghost Anim
+    
+    public static BufferedImage[] orangeGhostLeft;
+    public static BufferedImage[] orangeGhostRight;
+    public static BufferedImage[] orangeGhostUp;
+    public static BufferedImage[] orangeGhostDown;
+    
     public Images() {
 
         startGameButton = new BufferedImage[3];
@@ -81,7 +107,26 @@ public class Images {
         
         edibleGhost = new BufferedImage[2];
         pacmanFruit = new BufferedImage[2];
-
+        
+        redGhostLeft = new BufferedImage[2];
+        redGhostRight = new BufferedImage[2];
+        redGhostUp = new BufferedImage[2];
+        redGhostDown = new BufferedImage[2];
+        
+        pinkGhostLeft = new BufferedImage[2];
+        pinkGhostRight = new BufferedImage[2];
+        pinkGhostUp = new BufferedImage[2];
+        pinkGhostDown = new BufferedImage[2];
+        
+        blueGhostLeft = new BufferedImage[2];
+        blueGhostRight = new BufferedImage[2];
+        blueGhostUp = new BufferedImage[2];
+        blueGhostDown = new BufferedImage[2];
+        
+        orangeGhostLeft = new BufferedImage[2];
+        orangeGhostRight = new BufferedImage[2];
+        orangeGhostUp = new BufferedImage[2];
+        orangeGhostDown = new BufferedImage[2];
 
         try {
 
@@ -208,6 +253,59 @@ public class Images {
 			pacmanDeath[7] = pacmanSpriteSheet.crop(619, 8, 9, 7);
 			pacmanDeath[8] = pacmanSpriteSheet.crop(637, 8, 5, 7);
 			pacmanDeath[9] = pacmanSpriteSheet.crop(666, 6, 11, 10);
+			
+			//Red Ghost
+			redGhostLeft[0] = pacmanSpriteSheet.crop(489, 65, 14, 14);
+			redGhostLeft[1] = pacmanSpriteSheet.crop(505, 65, 14, 14);
+			
+			redGhostRight[0] = pacmanSpriteSheet.crop(457, 65, 14, 14);
+			redGhostRight[1] = pacmanSpriteSheet.crop(473, 65, 14, 14);
+			
+			redGhostUp[0] = pacmanSpriteSheet.crop(521, 65, 14, 14);
+			redGhostUp[1] = pacmanSpriteSheet.crop(537, 65, 14, 14);
+			
+			redGhostDown[0] = pacmanSpriteSheet.crop(553, 65, 14, 14);
+			redGhostDown[1] = pacmanSpriteSheet.crop(569, 65, 14, 14);
+			
+			//Pink Ghost
+			pinkGhostLeft[0] = pacmanSpriteSheet.crop(489, 81, 14, 14);
+			pinkGhostLeft[1] = pacmanSpriteSheet.crop(505, 81, 14, 14);
+			
+			pinkGhostRight[0] = pacmanSpriteSheet.crop(457, 81, 14, 14);
+			pinkGhostRight[1] = pacmanSpriteSheet.crop(473, 81, 14, 14);
+			
+			pinkGhostUp[0] = pacmanSpriteSheet.crop(521, 81, 14, 14);
+			pinkGhostUp[1] = pacmanSpriteSheet.crop(538, 81, 14, 14);
+			
+			pinkGhostDown[0] = pacmanSpriteSheet.crop(553, 81, 14, 14);
+			pinkGhostDown[1] = pacmanSpriteSheet.crop(569, 81, 14, 14);
+			
+			//Blue Ghost
+			blueGhostLeft[0] = pacmanSpriteSheet.crop(489,97, 14, 14);
+			blueGhostLeft[1] = pacmanSpriteSheet.crop(505,97, 14, 14);
+			
+			blueGhostRight[0] = pacmanSpriteSheet.crop(457,97, 14, 14);
+			blueGhostRight[1] = pacmanSpriteSheet.crop(473,97, 14, 14);
+			
+			blueGhostUp[0] = pacmanSpriteSheet.crop(521,97, 14, 14);
+			blueGhostUp[1] = pacmanSpriteSheet.crop(537,97, 14, 14);
+			
+			blueGhostDown[0] = pacmanSpriteSheet.crop(553,97, 14, 14);
+			blueGhostDown[1] = pacmanSpriteSheet.crop(569,97, 14, 14);
+			
+			//Orange Ghost
+			orangeGhostLeft[0] = pacmanSpriteSheet.crop(489,113, 14, 14);
+			orangeGhostLeft[1] = pacmanSpriteSheet.crop(505,113, 14, 14);
+			
+			orangeGhostRight[0] = pacmanSpriteSheet.crop(457,113, 14, 14);
+			orangeGhostRight[1] = pacmanSpriteSheet.crop(473,113, 14, 14);
+			
+			orangeGhostUp[0] = pacmanSpriteSheet.crop(521,113, 14, 14);
+			orangeGhostUp[1] = pacmanSpriteSheet.crop(538,113, 14, 14);
+			
+			orangeGhostDown[0] = pacmanSpriteSheet.crop(553,113, 14, 14);
+			orangeGhostDown[1] = pacmanSpriteSheet.crop(569,113, 14, 14);
+			
 			
             intro = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/PacMan/intro.png"));
             start = ImageIO.read(getClass().getResourceAsStream("/UI/Backgrounds/startScreen.png"));
