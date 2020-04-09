@@ -7,11 +7,14 @@ import Game.PacMan.entities.Statics.BaseStatic;
 import Game.PacMan.entities.Statics.BigDot;
 import Game.PacMan.entities.Statics.BoundBlock;
 import Game.PacMan.entities.Statics.Dot;
+import Game.PacMan.entities.Statics.Fruit;
+import Game.PacMan.entities.Statics.Fruit2;
 import Main.Handler;
 import Resources.Images;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 public class MapBuilder {
 
@@ -21,6 +24,11 @@ public class MapBuilder {
 	public static int ghostSpawner = new Color(25, 255,0).getRGB();
 	public static int dotC = new Color(255, 10, 0).getRGB();
 	public static int bigDotC = new Color(167, 0, 150).getRGB();
+	public static int fruitC = new Color(255, 10, 0).getRGB();
+	public static int fruitB = new Color(255, 10, 0).getRGB();
+	
+	static Random rand = new Random();
+	static int randFruit = rand.nextInt(2); 
 
 	public static Map createMap(BufferedImage mapImage, Handler handler){
 		Map mapInCreation = new Map(handler);
@@ -37,10 +45,21 @@ public class MapBuilder {
 					mapInCreation.addEnemy(PacMan);
 					handler.setPacman((Game.PacMan.entities.Dynamics.PacMan) PacMan);
 				}else if(currentPixel == ghostSpawner){
-					mapInCreation.addEnemy(GhostSpawner.firstGhosts(xPos, yPos, handler));	
+					mapInCreation.addEnemy(GhostSpawner.firstGhosts(xPos, yPos, handler));						
 				}else if(currentPixel == dotC){
+					if(Math.random()< 0.30) {
+						if(randFruit==0) {
+						BaseStatic fruit = new Fruit(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+						mapInCreation.addBlock(fruit);
+						}else {
+							BaseStatic fruit2 = new Fruit2(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+							mapInCreation.addBlock(fruit2);
+						}
+					}else {
 					BaseStatic dot = new Dot(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addBlock(dot);
+					}
+					
 				}else if(currentPixel == bigDotC){
 					BaseStatic bigDot = new BigDot(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addBlock(bigDot);

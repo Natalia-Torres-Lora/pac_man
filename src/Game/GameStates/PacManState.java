@@ -8,6 +8,8 @@ import Game.PacMan.entities.Dynamics.GhostSpawner;
 import Game.PacMan.entities.Statics.BaseStatic;
 import Game.PacMan.entities.Statics.BigDot;
 import Game.PacMan.entities.Statics.Dot;
+import Game.PacMan.entities.Statics.Fruit;
+import Game.PacMan.entities.Statics.Fruit2;
 import Main.Handler;
 import Resources.Animation;
 import Resources.Images;
@@ -56,6 +58,18 @@ public class PacManState extends State {
 
                         }
                         blocks.tick();
+                    }else if(blocks instanceof Fruit) {
+                    	if (blocks.getBounds().intersects(handler.getPacman().getBounds())){
+                            handler.getMusicHandler().playEffect("pacman_eatfruit.wav");
+                            toREmove.add(blocks);
+                            handler.getScoreManager().addPacmanCurrentScore(120);
+                        }                    	
+                    }else if(blocks instanceof Fruit2) {
+                    	if (blocks.getBounds().intersects(handler.getPacman().getBounds())){
+                            handler.getMusicHandler().playEffect("pacman_eatfruit.wav");
+                            toREmove.add(blocks);
+                            handler.getScoreManager().addPacmanCurrentScore(120);
+                        }                    	
                     }
                 }
                 for (BaseStatic removing: toREmove){
@@ -91,6 +105,18 @@ public class PacManState extends State {
 
             	}
             	blocks.tick();
+            }else if(blocks instanceof Fruit) {
+            	if (blocks.getBounds().intersects(handler.getPacman().getBounds())){
+                    handler.getMusicHandler().playEffect("pacman_eatfruit.wav");
+                    toREmove.add(blocks);
+                    handler.getScoreManager().addPacmanCurrentScore(120);
+               }            	
+            }else if(blocks instanceof Fruit2) {
+            	if (blocks.getBounds().intersects(handler.getPacman().getBounds())){
+                    handler.getMusicHandler().playEffect("pacman_eatfruit.wav");
+                    toREmove.add(blocks);
+                    handler.getScoreManager().addPacmanCurrentScore(120);
+                }            	
             }
         }
         for(BaseDynamic entity : handler.getMap().getEnemiesOnMap()) {

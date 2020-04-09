@@ -30,7 +30,7 @@ public class Ghost extends BaseDynamic{
 		rightAnim = new Animation(128,Images.pacmanRight);
 		upAnim = new Animation(128,Images.pacmanUp);
 		downAnim = new Animation(128,Images.pacmanDown);
-		edibleAnim = new Animation(128,Images.edibleGhost);		
+		edibleAnim = new Animation(500,Images.edibleGhost);		
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class Ghost extends BaseDynamic{
 		case "Down":
 			y+=velY;
 			downAnim.tick();
-			break;
+			break;			
 		}
 		edibleAnim.tick();
 		//Makes the ghost change position once it touches a wall.

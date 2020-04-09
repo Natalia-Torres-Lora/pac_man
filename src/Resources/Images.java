@@ -52,6 +52,7 @@ public class Images {
     public static BufferedImage[] blink;
     //Added ghost death Animation
     public static BufferedImage [] edibleGhost;
+    public static BufferedImage[] pacmanFruit;
 
     public Images() {
 
@@ -79,6 +80,7 @@ public class Images {
         pacmanDeath = new BufferedImage[10];
         
         edibleGhost = new BufferedImage[2];
+        pacmanFruit = new BufferedImage[2];
 
 
         try {
@@ -161,6 +163,9 @@ public class Images {
             //
             edibleGhost[0] = pacmanSpriteSheet.crop(601, 65, 14, 14);
             edibleGhost[1] = pacmanSpriteSheet.crop(617, 65, 14, 14);
+            
+            pacmanFruit[0] = pacmanSpriteSheet.crop(490, 50, 12, 12);
+            pacmanFruit[1] = pacmanSpriteSheet.crop(506, 50, 11, 12);
             
             
 

@@ -42,13 +42,11 @@ public class Map {
     public void drawMap(Graphics2D g2) {
         for (BaseStatic block:blocksOnMap) {
         	if (block instanceof BigDot) {
-        		g2.drawImage(((BigDot)block).blink.getCurrentFrame(), block.x, block.y, block.width, block.height, null);     		
+        		g2.drawImage(((BigDot)block).blink.getCurrentFrame(), block.x, block.y, block.width, block.height, null);  
         	}
-        	else {
-
-            g2.drawImage(block.sprite, block.x, block.y, block.width, block.height, null);
-        	}
-
+        	else {        		
+                g2.drawImage(block.sprite, block.x, block.y, block.width, block.height, null);
+            	}        	
         }
         for (BaseDynamic entity:enemiesOnMap) {
             if (entity instanceof PacMan) {
