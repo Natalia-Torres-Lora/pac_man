@@ -24,8 +24,11 @@ public class Ghost extends BaseDynamic{
 	Random rand = new Random();
 	int direction = 2;
 	int move = 0;
+	public String colorGhost;
+	
 	public Ghost(int x, int y, int width, int height, Handler handler, String color) {
 		super(x, y, width, height, handler, Images.ghost);
+		colorGhost = color;
 		if (color == "red") {
 			leftAnim = new Animation(128,Images.redGhostLeft);
 			rightAnim = new Animation(128,Images.redGhostRight);
@@ -256,6 +259,10 @@ public class Ghost extends BaseDynamic{
 	}
 	public double getVelY() {
 		return velY;
+	}
+
+	public  String getColorGhost() {
+		return colorGhost;
 	}
 
 }
