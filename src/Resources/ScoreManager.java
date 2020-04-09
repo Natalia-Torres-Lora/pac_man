@@ -53,6 +53,9 @@ public class ScoreManager {
     public void setPacmanHighScore(int pacmanHighScore) {
         this.pacmanHighScore = pacmanHighScore;
     }
+    public void addPacmanHighScore(int pacmanHighScore) {
+        this.pacmanHighScore += pacmanHighScore;
+    }
 
     public int getPacmanCurrentScore() {
         return pacmanCurrentScore;
