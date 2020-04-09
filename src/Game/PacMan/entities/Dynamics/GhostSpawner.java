@@ -14,17 +14,27 @@ public class GhostSpawner{
 		//Saves spawn coordinates
 		xPos = x;
 		yPos = x;
-		
+
 		BaseDynamic ghost = new Ghost(xPos,yPos,pixel,pixel,handler, allColors[colorCode]);	
 		return ghost;
 	}
 	public static void newGhost(Handler handler) {
+
 		Random randColor = new Random();
 		String color = allColors[randColor.nextInt(allColors.length)]; //Chooses a random color for the ghost
-		
-		System.out.println(color);
+		BaseDynamic ghost = new Ghost(xPos,yPos,pixel,pixel,handler,color );
+		handler.getMap().addEnemy(ghost);
+
+
+	}
+	public static int timer() {
+		Random rand = new Random();
+		int timer = (rand.nextInt(4) + 1) * 60; 
+		return timer;
+	}
+	
+	public static void respawnGhost(Handler handler, String color) {
 		BaseDynamic ghost = new Ghost(xPos,yPos,pixel,pixel,handler,color );
 		handler.getMap().addEnemy(ghost);
 	}
-	
 }

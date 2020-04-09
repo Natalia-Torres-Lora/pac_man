@@ -25,7 +25,9 @@ public class PacManState extends State {
     public int startCooldown = 60*4;//seven seconds for the music to finish
     public int edibleTimer = 60*30;
     public Animation edibleAnim;
-
+    int ghostCount = 4;
+    int timer = 0;
+    String ghostColor;
     
     public PacManState(Handler handler){
         super(handler);
@@ -125,6 +127,9 @@ public class PacManState extends State {
         			handler.getMusicHandler().playEffect("pacman_eatghost.wav");
         			toREmoveG.add(entity);
         			handler.getScoreManager().addPacmanCurrentScore(500);
+        			ghostCount -= 1;
+        			timer = GhostSpawner.timer();
+        			ghostColor = ((Ghost) entity).getColorGhost();
         		}
         	}
         }
@@ -145,13 +150,21 @@ public class PacManState extends State {
 
         }else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ENTER)){
         	Mode = "Menu";
-        }else {
-        	if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_C)) {
-    			GhostSpawner.newGhost(handler);
-    		}
-
         }
+        
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_C)) {
+			GhostSpawner.newGhost(handler);
+			ghostCount += 1;
+		}
 
+        if (ghostCount < 4) {
+        	if (timer <= 0) {
+        		ghostCount += 1;
+        		GhostSpawner.respawnGhost(handler, ghostColor);
+        	}else {
+        		timer--;
+        	}
+        }
     }
 
     @Override
