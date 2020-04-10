@@ -26,7 +26,7 @@ public class PacMan extends BaseDynamic{
 	int deathCooldown = 77;
 	int startingX;
 	int startingY;
-	
+
 	boolean death = false;
 	boolean startingPos = true;
 
@@ -181,10 +181,12 @@ public class PacMan extends BaseDynamic{
 
 		for(BaseDynamic enemy : enemies){
 			Rectangle enemyBounds = !toUp ? enemy.getTopBounds() : enemy.getBottomBounds();
-			if (pacmanBounds.intersects(enemyBounds)) {
-				pacmanDies = true;
-				break;
-			}
+			if (!(handler.getPacManState().getMode() == "Edible")){
+				if (pacmanBounds.intersects(enemyBounds)) {
+					pacmanDies = true;
+					break;
+				}
+			}	
 		}
 
 		if(pacmanDies) {
@@ -229,9 +231,11 @@ public class PacMan extends BaseDynamic{
 
 		for(BaseDynamic enemy : enemies){
 			Rectangle enemyBounds = !toRight ? enemy.getRightBounds() : enemy.getLeftBounds();
-			if (pacmanBounds.intersects(enemyBounds)) {
-				pacmanDies = true;
-				break;
+			if (!(handler.getPacManState().getMode() == "Edible")) {
+				if (pacmanBounds.intersects(enemyBounds)) {
+					pacmanDies = true;
+					break;
+				}
 			}
 		}
 
