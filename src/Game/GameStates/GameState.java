@@ -56,6 +56,7 @@ public class GameState extends State {
                 handler.getMouseManager().setUimanager(null);
                 handler.getMusicHandler().stopMusic();
                 State.setState(handler.getPacManState());
+                handler.getMusicHandler().playEffect("pacman_intermission.wav");
             }
         }));
     }

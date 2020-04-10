@@ -159,12 +159,10 @@ public class PacManState extends State {
         }else if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ENTER)){
         	Mode = "Menu";
         }
-        
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_C)) {
 			GhostSpawner.newGhost(handler);
 			ghostCount += 1;
-		}
-        
+		}        
         //Checks if there is less than 4 ghosts and runs the timer for a new one to spawn
         if (ghostCount < 4) {
         	if (timer <= 0) {
@@ -189,7 +187,7 @@ public class PacManState extends State {
         if (Mode.equals("Stage")){
             Graphics2D g2 = (Graphics2D) g.create();
             handler.getMap().drawMap(g2);
-            g.setColor(Color.WHITE);
+            g.setColor(Color.cyan);
             g.setFont(new Font("TimesRoman", Font.PLAIN, 32));
             g.drawString("Score: " + handler.getScoreManager().getPacmanCurrentScore(),(handler.getWidth()/2) + handler.getWidth()/6, 25);
             g.drawString("High-Score: " + handler.getScoreManager().getPacmanHighScore(),(handler.getWidth()/2) + handler.getWidth()/6, 75);            
@@ -200,7 +198,7 @@ public class PacManState extends State {
         }else if (Mode.equals("Edible")) {
         	Graphics2D g2 = (Graphics2D) g.create();
             handler.getMap().drawMapEdible(g2);
-            g.setColor(Color.WHITE);
+            g.setColor(Color.cyan);
             g.setFont(new Font("TimesRoman", Font.PLAIN, 32));
             g.drawString("Score: " + handler.getScoreManager().getPacmanCurrentScore(),(handler.getWidth()/2) + handler.getWidth()/6, 25);
             g.drawString("High-Score: " + handler.getScoreManager().getPacmanHighScore(),(handler.getWidth()/2) + handler.getWidth()/6, 75);            
