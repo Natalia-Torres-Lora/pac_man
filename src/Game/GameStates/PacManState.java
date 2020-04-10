@@ -182,8 +182,12 @@ public class PacManState extends State {
         pacmanLogoAnim.tick();
         
     }
+	public void setStartCooldown(int startCooldown) {
+		this.startCooldown = startCooldown;
+	}
 
-    @Override
+
+	@Override
     public void render(Graphics g) {
 
         if (Mode.equals("Stage")){
