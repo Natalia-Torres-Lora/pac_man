@@ -26,7 +26,7 @@ public class PacMan extends BaseDynamic{
 	int deathCooldown = 77;
 	int startingX;
 	int startingY;
-	
+
 	boolean death = false;
 	boolean startingPos = true;
 
@@ -56,7 +56,7 @@ public class PacMan extends BaseDynamic{
 			startingY = y;
 			startingPos = false;
 		}
-		
+
 
 		switch (facing){
 		case "Right":
@@ -104,7 +104,7 @@ public class PacMan extends BaseDynamic{
 				turnFlag = true;
 				turnCooldown = 20;
 			}
-			
+
 		} else {
 			//Starts death animation, once timer ends, sends Pacman to the spawn position
 			facing = "Death";
@@ -115,7 +115,7 @@ public class PacMan extends BaseDynamic{
 				setX(startingX);
 				setY(startingY);
 				facing = "Left";
-				
+
 			}
 			else {
 				deathCooldownTimer--;
@@ -177,10 +177,12 @@ public class PacMan extends BaseDynamic{
 
 		for(BaseDynamic enemy : enemies){
 			Rectangle enemyBounds = !toUp ? enemy.getTopBounds() : enemy.getBottomBounds();
-			if (pacmanBounds.intersects(enemyBounds)) {
-				pacmanDies = true;
-				break;
-			}
+			if (!(handler.getPacManState().getMode() == "Edible")){
+				if (pacmanBounds.intersects(enemyBounds)) {
+					pacmanDies = true;
+					break;
+				}
+			}	
 		}
 
 		if(pacmanDies) {
@@ -225,10 +227,13 @@ public class PacMan extends BaseDynamic{
 
 		for(BaseDynamic enemy : enemies){
 			Rectangle enemyBounds = !toRight ? enemy.getRightBounds() : enemy.getLeftBounds();
-			if (pacmanBounds.intersects(enemyBounds)) {
-				pacmanDies = true;
-				break;
+			if (!(handler.getPacManState().getMode() == "Edible")) {
+				if (pacmanBounds.intersects(enemyBounds)) {
+					pacmanDies = true;
+					break;
+				}
 			}
+
 		}
 
 		if(pacmanDies) {
@@ -269,7 +274,7 @@ public class PacMan extends BaseDynamic{
 		}
 		return true;
 	}
-	
+
 	//Starts pacmanDeath sequence, plays sounds effects, looses a life and enable animation to start. 
 	public void pacmanDeath() {
 		// Checks if deathCooldownTimer is inactive to activate sequence
