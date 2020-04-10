@@ -39,7 +39,6 @@ public class Images {
     public static BufferedImage start;
     
     public static BufferedImage [] pacmanDeath;
-
     
     public static BufferedImage galagaImageSheet;
     public SpriteSheet galagaSpriteSheet;
@@ -54,6 +53,7 @@ public class Images {
     public static BufferedImage [] edibleGhost;
     public static BufferedImage[] pacmanFruit;
     public static BufferedImage endGameBackground;
+    public static BufferedImage[]pacmanGameOver;
 
     //Red Ghost Anim
     public static BufferedImage[] redGhostLeft;
@@ -74,8 +74,7 @@ public class Images {
     public static BufferedImage[] blueGhostUp;
     public static BufferedImage[] blueGhostDown;
     
-    //Orange Ghost Anim
-    
+    //Orange Ghost Anim    
     public static BufferedImage[] orangeGhostLeft;
     public static BufferedImage[] orangeGhostRight;
     public static BufferedImage[] orangeGhostUp;
@@ -131,6 +130,8 @@ public class Images {
         orangeGhostDown = new BufferedImage[2];
 
         points = new BufferedImage[1];
+        //
+        pacmanGameOver = new BufferedImage[2];
         
         try {
 
@@ -205,11 +206,11 @@ public class Images {
             //Added blinking images
             blink[0] = pacmanSpriteSheet.crop(643,18,16,16);
             
-         // Added Image image of the origianl PacMan Logo
+            // Added Image image of the origianl PacMan Logo
             pacmanLogo[0] = ImageIO.read(getClass().getResourceAsStream("/UI/Buttons/Selection/Galaga/Pacmanpng.png"));
-           // pacmanLogo[1] = ImageIO.read(getClass().getResourceAsStream("UI/Buttons/Selection/Galaga/hover_pacman_logo.png"));
-           // pacmanLogo[2] = ImageIO.read(getClass().getResourceAsStream("UI/Buttons/Selection/Galaga/pressed_pacman_logo.png"));
-            //
+            pacmanLogo[1] = ImageIO.read(getClass().getResourceAsStream("/UI/Buttons/Selection/Galaga/hover_pacman_logo.png"));
+            pacmanLogo[2] = ImageIO.read(getClass().getResourceAsStream("/UI/Buttons/Selection/Galaga/pressed_pacman_logo.png"));
+            
             edibleGhost[0] = pacmanSpriteSheet.crop(585, 65, 14, 14);
             edibleGhost[1] = pacmanSpriteSheet.crop(601, 65, 14, 14);
             edibleGhost[2] = pacmanSpriteSheet.crop(617, 65, 14, 14);
@@ -219,6 +220,7 @@ public class Images {
             pacmanFruit[1] = pacmanSpriteSheet.crop(506, 50, 11, 12);
             
             endGameBackground = ImageIO.read(getClass().getResourceAsStream("/UI/Backgrounds/GameOver.png"));
+            pacmanGameOver[0] = ImageIO.read(getClass().getResourceAsStream("/UI/Backgrounds/EndGame.png"));
             
             
 

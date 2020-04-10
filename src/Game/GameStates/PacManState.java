@@ -22,6 +22,7 @@ import java.util.ArrayList;
 public class PacManState extends State {
 
     private UIManager uiManager;
+    private Animation pacmanLogoAnim;
     public String Mode = "Intro";
     public int startCooldown = 60*4;//seven seconds for the music to finish
     public int edibleTimer = 60*30;
@@ -34,6 +35,7 @@ public class PacManState extends State {
     public PacManState(Handler handler){
         super(handler);
         handler.setMap(MapBuilder.createMap(Images.map1, handler));
+        pacmanLogoAnim= new Animation(256, Images.pacmanLogo);
   
     }
  
@@ -177,7 +179,7 @@ public class PacManState extends State {
         		pointsTimer --;
         	}
         }
-        
+        pacmanLogoAnim.tick();
         
     }
 
@@ -194,6 +196,7 @@ public class PacManState extends State {
             g.drawString("Lives: " + handler.getPacman().getPacmanLives(),(handler.getWidth()/2) + (handler.getWidth()/6), 125); // Shows Current lives
         }else if (Mode.equals("Menu")){
             g.drawImage(Images.start,0,0,handler.getWidth()/2,handler.getHeight(),null);
+            g.drawImage(pacmanLogoAnim.getCurrentFrame(),handler.getWidth()/3-(handler.getWidth()/5),handler.getHeight()/2-handler.getHeight()/4,handler.getWidth()/4,handler.getHeight()/7,null);
         }else if (Mode.equals("Edible")) {
         	Graphics2D g2 = (Graphics2D) g.create();
             handler.getMap().drawMapEdible(g2);
