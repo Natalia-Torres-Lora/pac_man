@@ -30,6 +30,7 @@ public class EndGameState extends State {
 			pacmanState= new PacManState(handler);
 			State.setState(handler.getMenuState());
 			handler.getScoreManager().setPacmanCurrentScore(0);
+			handler.getPacManState().setMode("Menu");
 		}
 	}
 

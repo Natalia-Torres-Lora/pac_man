@@ -162,7 +162,8 @@ public class PacManState extends State {
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_C)) {
 			GhostSpawner.newGhost(handler);
 			ghostCount += 1;
-		}        
+		}  
+        
         //Checks if there is less than 4 ghosts and runs the timer for a new one to spawn
         if (ghostCount < 4) {
         	if (timer <= 0) {
@@ -170,13 +171,14 @@ public class PacManState extends State {
         		GhostSpawner.respawnGhost(handler, ghostColor);
         	}else {
         		timer--;
-        	}
-        	if(pointsTimer <= 0) {
-        		handler.getMap().getBlocksOnMap().remove(points);
-        	}else {
-        		pointsTimer --;
-        	}
+        	}   	
         }
+        //Timer for points to dissapear when a ghost is eaten
+        if(pointsTimer <= 0) {
+    		handler.getMap().getBlocksOnMap().remove(points);
+    	}else {
+    		pointsTimer --;
+    	}
         pacmanLogoAnim.tick();
         
     }
@@ -214,6 +216,16 @@ public class PacManState extends State {
     public void refresh() {
 
     }
+
+
+	public String getMode() {
+		return Mode;
+	}
+
+
+	public void setMode(String mode) {
+		Mode = mode;
+	}
 
 
 }
