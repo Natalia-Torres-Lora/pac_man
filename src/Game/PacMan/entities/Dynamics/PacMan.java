@@ -115,6 +115,10 @@ public class PacMan extends BaseDynamic{
 				setX(startingX);
 				setY(startingY);
 				facing = "Left";
+				int lives = handler.getPacman().getPacmanLives();
+				if(lives == 0) {
+					State.setState(handler.getEndGameState());
+				}
 				
 			}
 			else {
@@ -279,9 +283,6 @@ public class PacMan extends BaseDynamic{
 			moving =false;
 			int lives = handler.getPacman().getPacmanLives();
 			handler.getPacman().setPacmanLives(lives - 1);
-			if(lives == 1) {
-				State.setState(handler.getEndGameState());
-			}
 		}
 
 	}
