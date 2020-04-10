@@ -27,9 +27,6 @@ public class MapBuilder {
 	public static int fruitC = new Color(255, 10, 0).getRGB();
 	public static int fruitB = new Color(255, 10, 0).getRGB();
 	
-	static Random rand = new Random();
-	static int randFruit = rand.nextInt(2); 
-
 	public static Map createMap(BufferedImage mapImage, Handler handler){
 		Map mapInCreation = new Map(handler);
 		for (int i = 0; i < mapImage.getWidth(); i++) {
@@ -50,13 +47,13 @@ public class MapBuilder {
 					}					
 				}else if(currentPixel == dotC){
 					if(Math.random()< 0.033) {
-						if(randFruit==0) {
-						BaseStatic fruit = new Fruit(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
-						mapInCreation.addBlock(fruit);
+						if(Math.random()>=0.5) {
+								BaseStatic fruit = new Fruit(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+								mapInCreation.addBlock(fruit);
 						}else {
-							BaseStatic fruit2 = new Fruit2(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
-							mapInCreation.addBlock(fruit2);
-						}
+								BaseStatic fruit2 = new Fruit2(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+								mapInCreation.addBlock(fruit2);
+						}						
 					}else {
 					BaseStatic dot = new Dot(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addBlock(dot);
@@ -100,7 +97,6 @@ public class MapBuilder {
 			 downPixel = mapImage.getRGB(i, j + 1);
 		}else{
 			 downPixel = pacman;
-
 		}
 
 		if (currentPixel != leftPixel && currentPixel != upPixel && currentPixel != downPixel && currentPixel == rightPixel){
