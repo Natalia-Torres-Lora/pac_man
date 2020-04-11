@@ -137,7 +137,7 @@ public class PacManState extends State {
         			Rectangle bounds = entity.getBounds();
         			points = new pointsGhost(bounds.x,bounds.y, bounds.width,bounds.height,handler);
         			handler.getMap().addBlock(points);
-        			pointsTimer = 60*2;
+        			pointsTimer = 5;
         		}
         	}
         }

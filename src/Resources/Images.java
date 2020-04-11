@@ -316,7 +316,7 @@ public class Images {
 			orangeGhostDown[0] = pacmanSpriteSheet.crop(553,113, 14, 14);
 			orangeGhostDown[1] = pacmanSpriteSheet.crop(569,113, 14, 14);
 			
-			points[0]= pacmanSpriteSheet.crop(488, 148, 15, 7);
+			points[0]= pacmanSpriteSheet.crop(488, 148, 15, 7);			
             intro = ImageIO.read(getClass().getResourceAsStream("/UI/SpriteSheets/PacMan/intro.png"));
             start = ImageIO.read(getClass().getResourceAsStream("/UI/Backgrounds/startScreen.png"));
             
