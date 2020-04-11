@@ -57,25 +57,29 @@ public class Ghost extends BaseDynamic{
 		edibleAnim = new Animation(128,Images.edibleGhost);	
 	}
 
+	public void setColorGhost(String colorGhost) {
+		this.colorGhost = colorGhost;
+	}
+
 	@Override
 	public void tick(){
 
 
 		switch (facing){
 		case "Right":
-			x+=velX;
+			x+=(double)velX;
 			rightAnim.tick();
 			break;
 		case "Left":
-			x-=velX;
+			x-=(double)velX;
 			leftAnim.tick();
 			break;
 		case "Up":
-			y-=velY;
+			y-=(double)velY;
 			upAnim.tick();
 			break;
 		case "Down":
-			y+=velY;
+			y+=(double)velY;
 			downAnim.tick();
 			break;			
 		}
@@ -130,19 +134,27 @@ public class Ghost extends BaseDynamic{
 
 		Rectangle ghostBounds = toUp ? ghost.getTopBounds() : ghost.getBottomBounds();
 
+		if (getColorGhost()=="red") {
+			velY=2;
+		}else if (getColorGhost()=="pink") {
+			velY=2.5;
+		}else if (getColorGhost()=="blue") {
+			velY=2.8;
+		}else {
 		velY = speed;
+		}
+		
+		
 		for (BaseStatic brick : bricks) {
 			if (brick instanceof BoundBlock) {
 				Rectangle brickBounds = !toUp ? brick.getTopBounds() : brick.getBottomBounds();
 				if (ghostBounds.intersects(brickBounds)) {
-					velY = 0;
+					velY =0;
 					colission = true;
 					if (toUp) {
 						colissionSide = "Up";
 						ghost.setY(brick.getY() + ghost.getDimension().height);
-					}
-						
-
+					}						
 					else {
 						colissionSide = "Down";
 						ghost.setY(brick.getY() - brick.getDimension().height);
@@ -173,8 +185,16 @@ public class Ghost extends BaseDynamic{
 		boolean toUp = moving && facing.equals("Up");
 
 		Rectangle ghostBounds = toUp ? ghost.getTopBounds() : ghost.getBottomBounds();
-
-		velY = speed;
+		
+		if (getColorGhost()=="red") {
+			velY=2;
+		}else if (getColorGhost()=="pink") {
+			velY=2.5;
+		}else if (getColorGhost()=="blue") {
+			velY=2.8;
+		}else {
+			velY = speed;
+		}
 		for (BaseStatic brick : bricks) {
 			if (brick instanceof BoundBlock) {
 				Rectangle brickBounds = !toUp ? brick.getTopBounds() : brick.getBottomBounds();
@@ -193,7 +213,15 @@ public class Ghost extends BaseDynamic{
 		Ghost ghost = this;
 		ArrayList<BaseStatic> bricks = handler.getMap().getBlocksOnMap();
 		ArrayList<BaseDynamic> enemies = handler.getMap().getEnemiesOnMap();
+		if (getColorGhost()=="red") {
+			velX=2;
+		}else if (getColorGhost()=="pink") {
+			velX=2.5;
+		}else if (getColorGhost()=="blue") {
+			velX=2.8;
+		}else {
 		velX = speed;
+		}
 		boolean ghostDies = false;
 		boolean toRight = moving && facing.equals("Right");
 
@@ -215,7 +243,7 @@ public class Ghost extends BaseDynamic{
 				if (brick instanceof BoundBlock) {
 					Rectangle brickBounds = !toRight ? brick.getRightBounds() : brick.getLeftBounds();
 					if (ghostBounds.intersects(brickBounds)) {
-						velX = 0;
+						velX =0;
 						colission = true;
 						if (toRight) {
 							colissionSide = "Right";
@@ -237,7 +265,15 @@ public class Ghost extends BaseDynamic{
 	public boolean checkPreHorizontalCollision(String facing){
 		Ghost ghost = this;
 		ArrayList<BaseStatic> bricks = handler.getMap().getBlocksOnMap();
+		if (getColorGhost()=="red") {
+			velX =2;
+		}else if (getColorGhost()=="pink") {
+			velX=2.5;
+		}else if (getColorGhost()=="blue") {
+			velX=2.8;
+		}else {
 		velX = speed;
+		}
 		boolean toRight = moving && facing.equals("Right");
 
 		Rectangle ghostBounds = toRight ? ghost.getRightBounds() : ghost.getLeftBounds();
