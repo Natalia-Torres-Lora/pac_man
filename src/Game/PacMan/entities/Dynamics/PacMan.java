@@ -118,6 +118,7 @@ public class PacMan extends BaseDynamic{
 				int lives = handler.getPacman().getPacmanLives();
 				if(lives == 0) {
 					State.setState(handler.getEndGameState());
+					handler.getMusicHandler().stopMusic();
 					handler.getMusicHandler().startMusic("pacman_intermission.wav");
 				}
 				

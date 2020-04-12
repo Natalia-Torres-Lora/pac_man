@@ -183,9 +183,6 @@ public class PacManState extends State {
     		pointsTimer --;
     	}
         pacmanLogoAnim.tick();
-        if(handler.getScoreManager().getPacmanHighScore()<handler.getScoreManager().getPacmanCurrentScore()) {
-			handler.getScoreManager().setPacmanHighScore(handler.getScoreManager().getPacmanCurrentScore());
-        }
         
     }
 	public void setStartCooldown(int startCooldown) {
