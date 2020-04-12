@@ -25,13 +25,13 @@ public class PacManState extends State {
     private Animation pacmanLogoAnim;
     public String Mode = "Intro";
     public int startCooldown = 60*4;//seven seconds for the music to finish
-    public int edibleTimer = 60*30;
+    public int edibleTimer = 60*20;
     public Animation edibleAnim;
     int ghostCount = 4;
     int timer = 0;
     String ghostColor;
     int pointsTimer;
-    BaseStatic points;
+    BaseStatic points;  
     public PacManState(Handler handler){
         super(handler);
         handler.setMap(MapBuilder.createMap(Images.map1, handler));
@@ -60,6 +60,7 @@ public class PacManState extends State {
                             handler.getMusicHandler().playEffect("pacman_chomp.wav");
                             toREmove.add(blocks);
                             handler.getScoreManager().addPacmanCurrentScore(100);
+                            handler.getMusicHandler().startMusic("pacman_edible.wav");
                             Mode = "Edible";
 
                         }
@@ -87,7 +88,8 @@ public class PacManState extends State {
         }else if(Mode.equals("Edible")) {
         	if(edibleTimer<=0) {
         		Mode = "Stage";
-        		edibleTimer = 60*30;
+        		edibleTimer = 60*20;
+        		handler.getMusicHandler().stopMusic();
         	}else {
         		edibleTimer--;
         for (BaseDynamic entity : handler.getMap().getEnemiesOnMap()) {        		
@@ -153,6 +155,7 @@ public class PacManState extends State {
         }else if (Mode.equals("Menu")){
         	if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ENTER)){
         		Mode = "Stage";
+        		handler.getMusicHandler().stopMusic();
         		handler.getMusicHandler().playEffect("pacman_beginning.wav");
         	}
 
@@ -201,7 +204,7 @@ public class PacManState extends State {
             g.drawString("Score: " + handler.getScoreManager().getPacmanCurrentScore(),(handler.getWidth()/2) + handler.getWidth()/6, 25);
             g.drawString("High-Score: " + handler.getScoreManager().getPacmanHighScore(),(handler.getWidth()/2) + handler.getWidth()/6, 75);            
             g.drawString("Lives: " + handler.getPacman().getPacmanLives(),(handler.getWidth()/2) + (handler.getWidth()/6), 125); // Shows Current lives
-            g.drawImage(Images.pacman,(handler.getWidth()/2) + (handler.getWidth()/50),680,handler.getWidth()/40, handler.getHeight()/25,null);
+            //g.drawImage(Images.pacman,(handler.getWidth()/2) + (handler.getWidth()/50),680,handler.getWidth()/40, handler.getHeight()/25,null);
         }else if (Mode.equals("Menu")){
             g.drawImage(Images.start,0,0,handler.getWidth()/2,handler.getHeight(),null);
             g.drawImage(pacmanLogoAnim.getCurrentFrame(),handler.getWidth()/3-(handler.getWidth()/5),handler.getHeight()/2-handler.getHeight()/4,handler.getWidth()/4,handler.getHeight()/7,null);

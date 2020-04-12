@@ -28,6 +28,7 @@ public class EndGameState extends State {
 			handler.getScoreManager().setPacmanCurrentScore(0);
 			handler.getPacManState().setMode("Menu");
 			handler.getPacManState().setStartCooldown(60*4);
+			handler.getMusicHandler().stopMusic();
 		}
 	}
 
