@@ -217,7 +217,7 @@ public class Images {
             edibleGhost[3] = pacmanSpriteSheet.crop(634, 65, 14, 14);
             
             pacmanFruit[0] = pacmanSpriteSheet.crop(490, 50, 12, 12);
-            pacmanFruit[1] = pacmanSpriteSheet.crop(522, 50, 12, 12);
+            pacmanFruit[1] = pacmanSpriteSheet.crop(506, 50, 11, 12);
             
             endGameBackground = ImageIO.read(getClass().getResourceAsStream("/UI/Backgrounds/GameOver.png"));
             pacmanGameOver[0] = ImageIO.read(getClass().getResourceAsStream("/UI/Backgrounds/EndGame.png"));
