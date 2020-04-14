@@ -40,8 +40,8 @@ public class EndGameState extends State {
 		g.drawImage(Images.endGameBackground,0,0,handler.getWidth(),handler.getHeight(),null);
 		g.drawImage(gameOverAnim.getCurrentFrame(),handler.getWidth()/2-(handler.getWidth()/6),handler.getHeight()/2-handler.getHeight()/10,handler.getWidth()/3,handler.getHeight()/7,null);
 		g.setColor(Color.cyan);
-        g.setFont(new Font("TimesRoman", Font.PLAIN, 40));
-        g.drawString("High-Score: " + handler.getScoreManager().getPacmanHighScore(),handler.getWidth()/2-(handler.getWidth()/14), 34);
+        g.setFont(new Font("TimesRoman", Font.BOLD, 40));
+        g.drawString("High-Score: " + handler.getScoreManager().getPacmanHighScore(),handler.getWidth()/2-(handler.getWidth()/13), 34);
 	}
 
 	@Override

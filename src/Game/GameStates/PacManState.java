@@ -28,7 +28,7 @@ public class PacManState extends State {
     public int edibleTimer = 60*20;
     public Animation edibleAnim;
     int ghostCount = 4;
-    int timer = 0;
+    int timer = 60*5;
     String ghostColor;
     int pointsTimer;
     BaseStatic points;  
